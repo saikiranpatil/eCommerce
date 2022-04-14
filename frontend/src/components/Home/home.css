@@ -1,0 +1,25 @@
+#hero {
+  display: flex;
+  flex-direction: column;
+  height: 100vmin;
+  background-image: linear-gradient(
+    to right,
+    #2193b0,
+    #37a3bf,
+    #4ab3ce,
+    #5cc4de,
+    #6dd5ed
+  );
+  justify-content: center;
+  align-items: center;
+}
+
+#hero::after {
+  content: "";
+  height: 100vmin;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  clip-path: polygon(100% 80%, 0 100%, 100% 100%);
+  top:0;
+}
