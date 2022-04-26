@@ -13,9 +13,9 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
     if (req.body.avatar) {
         myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
             folder: "avatars",
-            width: 150,
-            height: 150,
-            crop: "scale",
+            width: 250,
+            height: 250,
+            crop: "fill",
             radius: "max"
         })
     }
@@ -129,6 +129,8 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler("Password Does not Match"))
     }
 
+    console.log(req.body, "dssd");
+
     user.password = req.body.password;
     user.resetPasswordToken = null;
     user.resetPasswordExpiry = null;
@@ -151,11 +153,8 @@ exports.getUserDetails = catchAsyncError(async function (req, res, next) {
 // update password 
 exports.updatePassword = catchAsyncError(async function (req, res, next) {
     const user = await User.findById(req.user.id).select("+password");
-    console.log(req.body, user);
 
     const isUserPasswordMatched = await user.comparePassword(req.body.oldPassword);
-
-
 
     if (!isUserPasswordMatched) {
         return next(new ErrorHandler("Invalid old Password", 401));
@@ -174,9 +173,33 @@ exports.updatePassword = catchAsyncError(async function (req, res, next) {
 
 // update user profile
 exports.updateProfile = catchAsyncError(async function (req, res, next) {
+
+    var myCloud = { public_id: Date.now(), secure_url: "/profile.png" }
+
+    if (req.body.avatar) {
+        const user = await User.findById(req.user.id);
+
+        const imageId = user.avatar.public_id;
+
+        await cloudinary.v2.uploader.destroy(imageId);
+
+        myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "avatars",
+            width: 250,
+            height: 250,
+            crop: "fill",
+            radius: "max"
+        })
+    }
+
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
+    }
+
+    newUserData.avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url
     }
 
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
@@ -241,6 +264,11 @@ exports.deleteUserByAdmin = catchAsyncError(async function (req, res, next) {
     if (!user) {
         return next(new ErrorHandler(`User not found with id:${req.params.id}`));
     }
+
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId);
 
     await user.delete();
 

@@ -1,0 +1,36 @@
+.profileContainer {
+    margin: 0 5vmin;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    /* color: rgb(50, 50, 50); */
+    margin-bottom: 0.5rem;
+}
+
+.profileContainer h4 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.profileContainer p {
+    color: gray;
+    margin: 0.5em 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.profileImage{
+    box-shadow:0 10px 25px rgb(0 0 0 / 25%);
+    transition:0.25s ease-in-out;
+}
+.profileImage:hover{
+    transform:scale(1.07);
+}
+
+@media (max-width: 720px) {
+    .profileContainer .profileDetails {
+        text-align: center;
+    }
+}

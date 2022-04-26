@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema({
     stock: {
         type: String,
         required: [true, "please enter the product category"],
-        maxlength:[4,"stock cannot exeed 4 digits"],
+        maxlength: [4, "stock cannot exeed 4 digits"],
         default: 1
     },
     noOfReviews: {
@@ -46,7 +46,7 @@ const productSchema = new mongoose.Schema({
         {
             user: {
                 type: mongoose.Schema.ObjectId,
-                ref:"User",
+                ref: "User",
                 required: true,
             },
             name: {
@@ -60,17 +60,31 @@ const productSchema = new mongoose.Schema({
             comment: {
                 type: String,
                 required: true
+            },
+            avatar: {
+                public_id: {
+                    type: String,
+                    required: true
+                },
+                url: {
+                    type: String,
+                    required: true
+                }
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now()
             }
         }
     ],
-    user:{
-        type:mongoose.Schema.ObjectId,
-        ref:"User",
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
         required: [true]
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     }
 })
 

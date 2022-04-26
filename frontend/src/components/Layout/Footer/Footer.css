@@ -1,0 +1,31 @@
+footer {
+	padding: 2rem 3rem;
+	background: #181818;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#mainFooter {
+	display: grid;
+	grid-row-gap: 0.5rem;
+	max-width: 300px;
+	width: 60%;
+}
+
+#mainFooter::after {
+	content: "";
+	position: relative;
+	height: 3px;
+	width: 100%;
+	background: var(--green-clr);
+}
+
+#lstFooter {
+	background: #363636;
+	padding: 0 3rem;
+	justify-content: space-between;
+	line-height: 3;
+	align-items: center;
+}

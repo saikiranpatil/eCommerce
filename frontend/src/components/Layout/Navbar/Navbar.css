@@ -1,0 +1,245 @@
+nav {
+	justify-content: space-between;
+	position: fixed;
+	z-index: 5555;
+	top: 0;
+	background: #e40046;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+	padding: 0 3rem;
+	height: var(--navbar-height);
+}
+
+.logo {
+	cursor: pointer;
+}
+
+.logo a {
+	padding-top: 12px;
+}
+
+.logo-img {
+	width: 150px;
+	padding: auto;
+}
+
+.profile-btn {
+	align-items: center;
+	background-color: transparent;
+	margin-top: 0.25rem;
+}
+
+.profile-btn:hover {
+	background: #333;
+}
+
+.profile-btn:hover .dropdownWrapper {
+	display: block;
+}
+
+.profile-btn::after {
+	display: none;
+}
+
+.profile-btn .username {
+	color: #fff;
+	font-size: 13px;
+}
+
+.profile-btn .userImage {
+	margin-left: 1rem;
+	padding: 0.5rem;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+}
+
+.profile-btn .userLoggedInImage {
+	padding: 0.5rem;
+}
+
+.profile-btn .userLoggedInImage .userLoggedInMainImage {
+	height: 40px;
+	border-radius: 50%;
+}
+
+.dropdownWrapper {
+	top: calc(var(--navbar-height) - 5px);
+	right: 0;
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+	font-size: 13px;
+	width: 215px;
+	z-index: 100;
+	position: absolute;
+	border-radius: 4px 0px 4px 4px;
+	background-color: #333;
+	display: none;
+}
+
+.dropdownWrapper ul {
+	margin: 0.5rem 0;
+	padding: 0;
+}
+
+.dropdownWrapper ul li {
+	width: 100%;
+	margin: 0;
+	display: block;
+	line-height: 35px;
+	padding-left: 15px;
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 13px;
+	text-decoration: none;
+	border-radius: 0px !important;
+	cursor: pointer;
+}
+
+.dropdownWrapper ul li:hover {
+	background: var(--dark-black-clr);
+}
+
+.accountInfoNonLoggedIn {
+	border-top: 1px solid var(--dark-black-clr);
+}
+
+.footerIconsImg {
+	height: 16px;
+	margin-right: 5px;
+}
+
+.accountInfoNonLoggedIn {
+	text-align: center;
+	border-top: 1px solid rgba(180, 180, 180, 0.2);
+	float: left;
+	width: 100%;
+}
+
+.dropdownWrapper .newUser {
+	margin: 0;
+	margin-top: 15px;
+	cursor: default;
+	font-size: 11.4px;
+}
+
+.dropdownWrapper .newUser span {
+	color: #b4b4b4;
+}
+
+.dropdownWrapper .newUserRegister {
+	cursor: pointer;
+	display: inline-block;
+	margin-top: 5px;
+	color: #fff;
+}
+
+.accountBtn {
+	display: block !important;
+	width: 192px !important;
+	color: #fff !important;
+	border-radius: 2px !important;
+	cursor: pointer !important;
+	text-transform: uppercase !important;
+	font-size: 13px !important;
+	margin: 12px auto !important;
+	z-index: 60;
+	padding: 5px !important;
+	line-height: 26px;
+	background-color: #e40046;
+}
+
+.accountBtn:hover {
+	background-color: #d30341;
+}
+
+nav form {
+	margin-top: 6px;
+}
+
+.search-bar {
+	background: #fff;
+	border: #b7b7b7 solid 1px;
+	border-radius: 3px;
+	box-shadow: 0 0 3px #ccc;
+	position: relative;
+	font-family: 'Source Sans Pro', sans-serif;
+	width: 50vw;
+	max-width: 560px;
+}
+
+.search-bar input[type=text] {
+	border: none;
+	box-shadow: none;
+	width: 80%;
+	padding: 0.5em;
+	margin: 0;
+	overflow: hidden;
+	font-size: 14px;
+	margin: 0.25rem 0;
+	margin-left: 0.5rem;
+	color: var(--light-black-txt-clr)
+}
+
+.search-bar input[type=text]:focus {
+	outline: none;
+}
+
+.search-bar button[type=submit] {
+	background: linear-gradient(#333, var(--black-clr));
+	color: rgba(255, 255, 255, 0);
+	border: 1px solid #333;
+	width: 10%;
+	min-width: 56px;
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	border-radius: 0 3px 3px 0;
+	margin: 0;
+	user-select: none;
+}
+
+.search-bar button[type=submit]:after {
+	content: '';
+	position: absolute;
+	top: 18%;
+	right: 0;
+	bottom: 22%;
+	left: 4%;
+	background: url("http://media.lib.byu.edu/assets/images/searchbar/1.0/search-icon.svg") no-repeat center center;
+	background-size: contain;
+}
+
+.search-bar button[type=submit]:hover,
+.search-bar button[type=submit]:focus {
+	background: linear-gradient(var(--black-clr), #333);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.search-bar ::placeholder {
+	font-weight: 400;
+}
+
+#burger {
+	display: none;
+	width: 40px;
+	cursor: pointer;
+	transition: transform 0.25s;
+	transform: scale(0.8);
+	margin: auto 0;
+}
+
+#burger:hover {
+	transform: scale(1);
+}
+
+.bar {
+	background: #fff;
+	content: "";
+	display: block;
+	height: 4px;
+	border-radius: 3px;
+	margin: 7px 0;
+	transition: 0.5s;
+}

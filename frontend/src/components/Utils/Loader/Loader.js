@@ -3,12 +3,14 @@ import './Loader.css'
 
 const Loader = () => {
     return (
-        <div className="loader">
-            <div className="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+        <div id="preloader">
+            <div className="sk-chase">
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
             </div>
         </div>
     )

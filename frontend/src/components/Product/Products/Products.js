@@ -5,19 +5,24 @@ import { clearErrors, getProducts } from "../../../state/actions/productAction";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import Product from "../ProductCard/ProductCard";
-import { Link } from "react-router-dom";
 import Pagination from "../../Utils/Pagination/Pagination";
 import RangeSlider, { price } from "../../Utils/RangeSlider/RangeSlider";
 import "./style.css";
 import ReactStars from "react-rating-stars-component";
 import Metadata from "../../Layout/Metadata";
 
+const allCategories = [
+  "Laptop",
+  "Footware",
+  "Cycle",
+  "Smartphones",
+  "Books"
+]
+
 function Products() {
 
   const minPriceValue = 0;
   const maxPriceValue = 30000;
-
-  const allCategories = ["Laptop", "Footware", "Cycle", "Smartphones", "Books"]
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -64,7 +69,7 @@ function Products() {
   return (
     <>
       <Metadata title={"Sample Store" + (keyword ? `: ${keyword}` : "")} />
-      <section className="section section-products d-flex">
+      <section className="section d-flex">
         <div id="filterBox">
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -113,7 +118,7 @@ function Products() {
           <>
             <div className="container">
               <h5>Results</h5>
-              <div className="row">
+              <div className="all-products">
                 {products && !products.length ? <div className="text-center">No Products</div> :
                   products.map((product) => (
                     <Product key={product._id} product={product} />
@@ -131,3 +136,4 @@ function Products() {
 }
 
 export default Products;
+export { allCategories };

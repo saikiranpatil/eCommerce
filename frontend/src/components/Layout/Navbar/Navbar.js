@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import UserOptions from "../../Layout/Navbar/UserOptions";
+import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({ user, isAuthenticated }) {
+
   const [keyword, setKeyword] = useState("");
 
   let history = useHistory();
@@ -17,64 +20,31 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Navbar
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/products">
-                Products
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-          </ul>
-          <form className="d-flex" onSubmit={onSubmitSetKeyword}>
+    <>
+      <nav id="nav" className="flex glass  full-width">
+        <div className="logo flex">
+          <Link to="/">
+            <img className="logo-img" src="/icons/logo.svg" alt="" />
+          </Link>
+        </div>
+        <div>
+          <form className="search-bar">
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              onChange={(e) => setKeyword(e.target.value)}
+              type="text"
+              placeholder="Search for any products"
+              value={keyword}
+              onChange={(e) => { setKeyword(e.target.value) }}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <button type="submit" value="Search" onClick={onSubmitSetKeyword}>Search</button>
           </form>
         </div>
-      </div>
-    </nav>
+        <UserOptions isAuthenticated={isAuthenticated} user={user} />
+        <div id="burger">
+          <div id="bar1" className="bar" />
+          <div id="bar2" className="bar" />
+          <div id="bar3" className="bar" />
+        </div>
+      </nav>
+    </>
   );
 }

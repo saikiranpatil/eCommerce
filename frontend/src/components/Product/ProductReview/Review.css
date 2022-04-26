@@ -1,0 +1,38 @@
+.review {
+    margin: 0 2rem;
+    justify-self: left;
+}
+
+.review .text{
+    margin: 1rem;
+}
+
+.review-img {
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
+
+.review .comment {
+    font-size: 13px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #666;
+    margin:0;
+    margin-top: 15px;
+}
+
+.review .review-user{
+    align-items: flex-start;
+}
+
+.reviews .reviewUserName {
+    height: 14px;
+    display: inline-block;
+    line-height: 13px;
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+    color: #999999;
+    width:max-content;
+}

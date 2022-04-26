@@ -5,7 +5,7 @@ import Product from "../Product/ProductCard/ProductCard";
 import { clearErrors, getProducts } from "../../state/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Utils/Loader/Loader";
-import {useAlert} from 'react-alert';
+import { useAlert } from 'react-alert';
 
 export default function Home() {
   const alert = useAlert();
@@ -18,13 +18,13 @@ export default function Home() {
 
   useEffect(() => {
 
-    if(error) {
+    if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(getProducts());
-  }, [dispatch,error,alert]);
+  }, [dispatch, error, alert]);
 
 
   return (
@@ -35,25 +35,16 @@ export default function Home() {
         <>
           <Metadata title="Home | Sample Store" />
           <div id="hero">
-            <span className="text-light my-1">Welcome to sample store</span>
-            <h1 className="text-light my-3">Find your Products Below</h1>
-            <button className="btn btn-outline-light my-3">Scroll Down</button>
+            <span className="text-light">Welcome to sample store</span>
+            <h1 className="text-light">Find your Products Below</h1>
+            <button className="scroll-btn">Scroll Down</button>
           </div>
-          <section className="section-products">
-            <div className="container">
-              <div className="row justify-content-center text-center">
-                <div className="col-md-8 col-lg-6">
-                  <div className="header">
-                    <h3>Featured Product</h3>
-                    <h2>Popular Products</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                {products && !products.length ? (<div className="text-center">No Products</div>
-                ) :(
-                  products.map((product) => <Product key={product._id} product={product} />))}
-              </div>
+          <section className="featured-products-section">
+            <h2 className="text-center title-txt">Featured Product</h2>
+            <div className="all-products">
+              {products && !products.length ? (<div className="text-center">No Products</div>
+              ) : (
+                products.map((product, index) => <Product key={product._id} product={product} index={index} />))}
             </div>
           </section>
         </>
