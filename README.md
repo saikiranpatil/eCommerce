@@ -67,4 +67,4 @@ Open **http://localhost:3000** (frontend) in your browser.
 ## Tech Stack
 - **Frontend**: React, HTML, CSS, JavaScript  
 - **Backend**: Node.js, Express, JavaScript  
-- **Database**: Configurable via `connections.js` (models suggest MongoDB + Mongoose)
+- **Database**: Configurable via `connections.js` (MongoDB + Mongoose)
